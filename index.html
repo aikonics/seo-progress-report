@@ -40,6 +40,8 @@ svg text{fill:var(--text-muted);font-size:11px}
 dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:8px 0 0}dt{font-weight:600}dd{margin:0;color:var(--text-secondary)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
 .tw{overflow-x:auto}
+.how{margin-top:14px;background:var(--surface-0);border-radius:8px;padding:10px 14px}.how summary{cursor:pointer;font-weight:600}.how dl{grid-template-columns:190px 1fr}
+
 </style></head>
 <body><div class="viz-root"><div class="wrap">
 <h1>Website search progress – SEO Quartz</h1>
@@ -66,6 +68,14 @@ dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:8px 0 0}dt{f
 <div class="filters" id="filters"></div>
 <div class="legend" id="legend"></div>
 <div class="tw"><table id="tbl"><thead><tr><th>Website</th><th>Status</th><th class="num">Visits<br>May–Jul → Aug–Oct</th><th>Times shown in Google (12 months)</th><th class="num">Google page<br>(Oct avg.)</th><th>Pages in Google</th></tr></thead><tbody></tbody></table></div>
+<details class="how" open><summary>How to read this table</summary>
+<dl>
+<dt>Status</dt><dd><b>Growing</b>: more visits and shown more often. <b>Seen, not clicked</b>: Google shows the site a lot, but too far down the results for people to click. <b>Flat</b>: little change. <b>Dropping</b>: big fall since July. <b>New</b>: too early to judge.</dd>
+<dt>Visits May–Jul → Aug–Oct</dt><dd>Total visits from Google in May–July (left) and in August–October (right, bold). If the right number is bigger, the site is improving. Example: <b>27 → 37</b> means 27 visits, then 37. If both numbers are under about 10, the site gets almost no Google traffic either way.</dd>
+<dt>Times shown in Google</dt><dd>Each small bar is one month. Taller bars mean Google showed the site more often. Being shown is not the same as being clicked.</dd>
+<dt>Google page (Oct avg.)</dt><dd>Which page of Google's results the site usually appears on (10 results per page). <b>Page 1</b> gets most clicks, page 2 a few, page 3 or beyond very few. Lower is better. This is an average across all searches.</dd>
+<dt>Pages in Google</dt><dd>How many of the site's pages Google has chosen to keep in its results, for example <b>14% (59 of 413)</b>. Pages left out can't be found. Higher is better; 50% or more is strong. The total includes tag pages, redirects and old links, so no site reaches 100%.</dd>
+</dl></details>
 </div>
 
 <div class="card" id="detail"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><h2 id="dTitle"></h2><label class="muted">Website <select id="sel"></select></label></div>
