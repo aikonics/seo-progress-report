@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEO Quartz – Search Progress Report</title>
+<style>
+.viz-root{color-scheme:light;--surface-0:#f5f4f1;--surface-1:#fcfcfb;--border:#e3e2de;--grid:#ecebe7;--text-primary:#0b0b0b;--text-secondary:#52514e;--text-muted:#7a7974;
+--bar:#2a78d6;--bar-soft:#9ec5f4;--line:#2a78d6;--good:#0ca30c;--warning:#fab219;--serious:#ec835a;--critical:#d03b3b;--neutral:#8a8984;--track:#ecebe7}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .viz-root{color-scheme:dark;--surface-0:#121211;--surface-1:#1a1a19;--border:#33332f;--grid:#2a2a27;--text-primary:#f0efec;--text-secondary:#c3c2b7;--text-muted:#94938b;--bar:#3987e5;--bar-soft:#184f95;--line:#3987e5;--neutral:#94938b;--track:#2a2a27}}
+:root[data-theme="dark"] .viz-root{color-scheme:dark;--surface-0:#121211;--surface-1:#1a1a19;--border:#33332f;--grid:#2a2a27;--text-primary:#f0efec;--text-secondary:#c3c2b7;--text-muted:#94938b;--bar:#3987e5;--bar-soft:#184f95;--line:#3987e5;--neutral:#94938b;--track:#2a2a27}
+*{box-sizing:border-box}body{margin:0}
+.viz-root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--surface-0);color:var(--text-primary);min-height:100vh;padding:28px 20px 60px;font-size:14px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px;font-weight:650}h2{font-size:17px;margin:0 0 4px;font-weight:620}
+.sub{color:var(--text-secondary);margin:0}.muted{color:var(--text-muted);font-size:12px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-top:16px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.tile .lab{color:var(--text-secondary);font-size:12.5px}.tile .val{font-size:28px;font-weight:650;margin-top:2px;font-variant-numeric:tabular-nums}.tile .hint{color:var(--text-muted);font-size:12px}
+ul.find{margin:8px 0 0;padding-left:18px}ul.find li{margin:6px 0}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;white-space:nowrap;color:var(--text-primary)}
+.st i{width:18px;height:18px;border-radius:50%;display:inline-grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:#fff}
+.st.grow i{background:var(--good)}.st.low i{background:var(--warning);color:#3a2a00}.st.flat i{background:var(--neutral)}.st.drop i{background:var(--critical)}.st.new i{background:transparent;border:1.5px dashed var(--neutral);color:var(--text-secondary)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--text-secondary);font-size:12px;padding:8px 8px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 8px;border-bottom:1px solid var(--grid);vertical-align:middle}
+tr.row{cursor:pointer}tr.row:hover td{background:var(--surface-0)}tr.row.sel td{background:var(--surface-0)}
+td.num{text-align:right;white-space:nowrap}th.num{text-align:right}
+.site{font-weight:600}.fam{color:var(--text-muted);font-size:12px}
+.delta{color:var(--text-secondary);font-size:12px}
+.ixbar{width:90px;height:8px;border-radius:4px;background:var(--track);display:inline-block;vertical-align:middle;overflow:hidden;margin-right:6px}.ixbar span{display:block;height:100%;background:var(--bar);border-radius:4px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.chip{border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);border-radius:999px;padding:5px 12px;font-size:12.5px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1);border-color:var(--text-primary)}
+select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:12px}
+.chart h3{font-size:13.5px;margin:0;font-weight:600}.chart p{margin:2px 0 6px;color:var(--text-muted);font-size:12px}
+svg text{fill:var(--text-muted);font-size:11px}
+.tip{position:fixed;pointer-events:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);display:none;z-index:9;color:var(--text-primary)}
+.tip b{font-weight:600}
+.note{background:var(--surface-0);border-radius:8px;padding:10px 12px;margin-top:10px;color:var(--text-secondary)}
+dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:8px 0 0}dt{font-weight:600}dd{margin:0;color:var(--text-secondary)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.tw{overflow-x:auto}
+</style></head>
+<body><div class="viz-root"><div class="wrap">
+<h1>Website search progress – SEO Quartz</h1>
+<p class="sub">How often each website shows up in Google, and how many people click through. Last 12 months, 16 Nov 2025 – 15 Nov 2026.</p>
+<p class="muted">Source: Google Search Console (Aik's account), data pulled 18 Nov 2026. November 2025 and November 2026 are half months.</p>
+
+<div class="tiles" id="tiles"></div>
+
+<div class="card"><h2>Summary</h2>
+<ul class="find">
+<li><b>Informpros is the bright spot.</b> 200 visits from Google in the last 3 months and rising every month.</li>
+<li><b>Four early-learning sites fell sharply in July</b> (Bank Street, Waldorf, Reggio Emilia, HighScope). Bank Street, Waldorf and Reggio Emilia are down 55–92% and their visits have mostly dried up. These sites share near-identical pages with each other, which Google tends to filter out.</li>
+<li><b>The float and infrared sites are seen but not clicked.</b> Google shows them thousands of times a month, but on page 5–9 of results, where hardly anyone looks.</li>
+<li><b>Google only keeps a small share of each site's pages</b> (8–38%, except Informpros at 54%). Pages Google skips can't bring visitors. This is the same issue blocking AdSense approval.</li>
+<li><b>The Ayurvedic sites and City Oasis are too new to judge.</b></li>
+</ul></div>
+
+<div class="card"><h2>All sites together – visits from Google per month</h2>
+<p class="muted">Visits = clicks from Google search results. Hover a bar for numbers. Lighter bars are half months.</p>
+<div id="totalChart"></div></div>
+
+<div class="card"><h2>Report card</h2>
+<p class="muted">Compares the last 3 full months (Aug–Oct) with the 3 before (May–Jul). Click a row to see that site's charts below.</p>
+<div class="filters" id="filters"></div>
+<div class="legend" id="legend"></div>
+<div class="tw"><table id="tbl"><thead><tr><th>Website</th><th>Status</th><th class="num">Visits<br>May–Jul → Aug–Oct</th><th>Times shown in Google (12 months)</th><th class="num">Google page<br>(Oct avg.)</th><th>Pages in Google</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<div class="card" id="detail"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><h2 id="dTitle"></h2><label class="muted">Website <select id="sel"></select></label></div>
+<div class="note" id="dNote"></div>
+<div class="grid3">
+<div class="chart"><h3>Visits from Google</h3><p>Clicks per month</p><div id="cClicks"></div></div>
+<div class="chart"><h3>Times shown in Google</h3><p>Impressions per month</p><div id="cImpr"></div></div>
+<div class="chart"><h3>Ranking position</h3><p>1 = top of Google. Page 1 = positions 1–10 (shaded). Lower is better.</p><div id="cPos"></div></div>
+</div></div>
+
+<div class="card"><h2>What the words mean</h2><dl>
+<dt>Visits (clicks)</dt><dd>People who clicked through to the website from Google. This is the number that matters most.</dd>
+<dt>Times shown (impressions)</dt><dd>How often the site appeared in someone's Google results, even if they didn't click.</dd>
+<dt>Google page / position</dt><dd>Where the site ranks on average. Positions 1–10 are page 1, 11–20 page 2, and so on. Page 1 gets nearly all the clicks; page 3 and beyond get very few.</dd>
+<dt>Pages in Google</dt><dd>Pages Google has chosen to keep in its index. Pages left out can't be found. A low share usually means thin or repeated content.</dd>
+</dl></div>
+<p class="muted" style="margin-top:14px">Prepared by Aik with Claude. Figures are from Google Search Console and may differ slightly from totals shown there, because Google hides some low-volume searches.</p>
+</div><div class="tip" id="tip"></div></div>
+<script>
+const DATA={"months": ["2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10", "2026-11"], "sites": [{"site": "float-therapy.com", "family": "Float therapy", "status": "low", "note": "Shown more than twice as often, but on about page 6-7 of Google, so almost nobody clicks. AdSense content clean-up under way.", "clicks": [1, 2, 2, 1, 9, 1, 0, 2, 1, 0, 1, 0, 0], "impr": [70, 162, 95, 189, 517, 454, 220, 298, 421, 758, 387, 1115, 350], "pos": [23.5, 32.1, 24.1, 17.4, 40.5, 67.0, 57.9, 68.1, 69.2, 74.2, 69.9, 71.1, 64.0], "indexed": 59, "notIndexed": 354}, {"site": "ayurvedic-health.com.au", "family": "Ayurvedic health", "status": "new", "note": "New site (data from September). Too early to judge.", "clicks": [null, null, null, null, null, null, null, null, null, null, 4, 0, 0], "impr": [null, null, null, null, null, null, null, null, null, null, 55, 134, 56], "pos": [null, null, null, null, null, null, null, null, null, null, 56.5, 58.4, 54.6], "indexed": 57, "notIndexed": 92}, {"site": "ayurvedic-health.in", "family": "Ayurvedic health", "status": "new", "note": "New site (data from September). Too early to judge.", "clicks": [null, null, null, null, null, null, null, null, null, null, 4, 0, 0], "impr": [null, null, null, null, null, null, null, null, null, null, 23, 23, 21], "pos": [null, null, null, null, null, null, null, null, null, null, 24.6, 23.7, 35.9], "indexed": 33, "notIndexed": 122}, {"site": "ayurvedic-health.org", "family": "Ayurvedic health", "status": "new", "note": "New site (data from September). Too early to judge.", "clicks": [null, null, null, null, null, null, null, null, null, null, 4, 2, 0], "impr": [null, null, null, null, null, null, null, null, null, null, 168, 186, 65], "pos": [null, null, null, null, null, null, null, null, null, null, 60.2, 51.7, 46.2], "indexed": 85, "notIndexed": 137}, {"site": "bankstreet-earlylearningcurriculums.com", "family": "Early learning", "status": "drop", "note": "Was the best performer (90 visits in June). Sudden drop in July: impressions down 89%. Shares near-identical pages with the other early-learning sites.", "clicks": [null, 2, 16, 30, 54, 72, 70, 90, 20, 13, 14, 13, 8], "impr": [null, 141, 1090, 2181, 2404, 4251, 2958, 5051, 385, 566, 239, 157, 78], "pos": [null, 18.2, 9.9, 8.5, 8.5, 7.9, 10.3, 7.7, 24.3, 23.1, 19.2, 23.7, 17.0], "indexed": 49, "notIndexed": 122}, {"site": "cityoasis.in", "family": "City Oasis", "status": "new", "note": "Just added. No search data yet.", "clicks": [null, null, null, null, null, null, null, null, null, null, null, null, 0], "impr": [null, null, null, null, null, null, null, null, null, null, null, null, 1], "pos": [null, null, null, null, null, null, null, null, null, null, null, null, 2.0], "indexed": null, "notIndexed": null}, {"site": "earlylearningcurriculums.com", "family": "Early learning", "status": "flat", "note": "Flat. Slowly slipping from page 3-4 to page 5. Kaur finished the AdSense content fixes on 16 Nov.", "clicks": [null, 1, 1, 2, 0, 4, 1, 2, 5, 4, 1, 1, 0], "impr": [null, 65, 352, 452, 978, 1085, 893, 871, 693, 1070, 747, 465, 410], "pos": [null, 33.7, 31.8, 24.8, 42.8, 35.2, 40.8, 48.2, 40.2, 60.7, 58.7, 49.2, 54.4], "indexed": 52, "notIndexed": 104}, {"site": "float-therapy.com.au", "family": "Float therapy", "status": "flat", "note": "Shown often (2,000+ a month) but on page 6. Only 8% of its pages are in Google (lots of duplicate posts).", "clicks": [1, 1, 3, 1, 4, 5, 9, 3, 5, 1, 5, 5, 0], "impr": [151, 525, 1149, 2105, 5229, 3034, 2553, 2562, 2227, 2056, 1989, 2056, 651], "pos": [36.0, 61.1, 64.6, 58.5, 73.7, 62.1, 59.4, 46.2, 51.1, 54.8, 59.5, 60.0, 58.5], "indexed": 28, "notIndexed": 345}, {"site": "float-therapy.in", "family": "Float therapy", "status": "flat", "note": "Steady visibility, but ranking slipped from page 2 to page 3 since August. Visits down a little.", "clicks": [null, null, null, 1, 8, 6, 7, 13, 23, 18, 8, 6, 4], "impr": [null, null, null, 22, 706, 424, 688, 740, 903, 1779, 460, 373, 170], "pos": [null, null, null, 6.8, 11.8, 15.6, 16.8, 17.3, 18.2, 42.9, 30.1, 30.7, 28.8], "indexed": 59, "notIndexed": 291}, {"site": "highscope-earlylearningcurriculums.com", "family": "Early learning", "status": "drop", "note": "Impressions down 64% since July, but visits are holding (about 25 a month), on page 2.", "clicks": [null, 3, 9, 10, 15, 10, 20, 27, 37, 22, 23, 28, 13], "impr": [null, 165, 998, 1459, 1374, 3927, 6161, 6074, 4074, 3641, 1181, 1043, 612], "pos": [null, 29.3, 22.0, 14.3, 15.2, 10.5, 10.7, 11.2, 13.7, 20.9, 16.8, 15.8, 15.7], "indexed": 58, "notIndexed": 171}, {"site": "infraredlight-therapy.com.au", "family": "Infrared light therapy", "status": "low", "note": "Shown 42% more often, but ranks around page 5-6, so visits stay very low.", "clicks": [0, 0, 0, 2, 1, 2, 0, 2, 6, 2, 0, 2, 0], "impr": [93, 200, 255, 222, 1034, 954, 883, 3303, 4597, 5464, 3168, 3847, 3206], "pos": [64.8, 66.8, 62.2, 54.0, 68.9, 58.9, 54.1, 49.3, 52.5, 60.4, 52.0, 50.8, 63.2], "indexed": 10, "notIndexed": 20}, {"site": "infraredlight-therapy.com", "family": "Infrared light therapy", "status": "low", "note": "Shown about 10,000 times in 3 months, but average position is page 7-9. Almost no visits.", "clicks": [4, 4, 3, 5, 6, 3, 1, 1, 0, 1, 0, 0, 2], "impr": [119, 221, 355, 517, 3065, 1385, 1323, 1720, 6173, 5291, 2643, 2147, 1342], "pos": [67.8, 60.5, 44.6, 38.4, 67.0, 66.9, 62.7, 79.6, 86.3, 89.6, 83.9, 71.3, 44.2], "indexed": 43, "notIndexed": 262}, {"site": "infraredlight-therapy.in", "family": "Infrared light therapy", "status": "low", "note": "Shown twice as often, but slipped from page 2 (April) to page 7. Few visits.", "clicks": [0, 0, 0, 3, 1, 13, 2, 2, 0, 1, 0, 3, 1], "impr": [17, 34, 89, 77, 238, 138, 174, 160, 301, 916, 252, 208, 96], "pos": [22.8, 22.2, 31.7, 27.8, 30.9, 18.5, 49.7, 68.5, 71.1, 80.8, 67.6, 69.9, 53.2], "indexed": 41, "notIndexed": 163}, {"site": "montessori-earlylearningcurriculums.com", "family": "Early learning", "status": "grow", "note": "The only early-learning site still growing: impressions nearly doubled and visits went up (27 to 37).", "clicks": [null, 0, 1, 1, 1, 0, 7, 8, 12, 16, 10, 11, 4], "impr": [null, 32, 185, 260, 390, 426, 720, 901, 1201, 2135, 1343, 1749, 1447], "pos": [null, 41.0, 43.6, 32.0, 33.4, 26.7, 30.5, 26.6, 32.5, 40.4, 33.4, 29.4, 24.9], "indexed": 75, "notIndexed": 200}, {"site": "reggioemilia-earlylearningcurriculums.com", "family": "Early learning", "status": "drop", "note": "Was strong (73 visits in June). Visits went to zero from September, now on page 8.", "clicks": [null, 1, 4, 6, 13, 19, 20, 73, 51, 34, 0, 0, 0], "impr": [null, 129, 406, 601, 2460, 2236, 2369, 3865, 3817, 3951, 373, 185, 60], "pos": [null, 60.6, 32.7, 27.3, 37.7, 31.5, 38.3, 28.5, 29.0, 37.8, 76.7, 75.3, 81.0], "indexed": 43, "notIndexed": 170}, {"site": "waldorf-earlylearningcurriculums.com", "family": "Early learning", "status": "drop", "note": "Sudden drop in July: impressions down 92%, visits went to zero. Shares near-identical pages with the sister sites.", "clicks": [null, 1, 3, 4, 1, 6, 20, 26, 1, 0, 0, 0, 0], "impr": [null, 86, 997, 1452, 1579, 2324, 4078, 3641, 308, 344, 178, 94, 18], "pos": [null, 32.9, 14.5, 12.0, 11.3, 12.1, 14.3, 10.8, 40.1, 62.8, 48.0, 69.3, 57.4], "indexed": 48, "notIndexed": 136}, {"site": "www.informpros.com.au", "family": "Informpros", "status": "grow", "note": "New in Search Console since Aug. Strong and rising: 200 visits in the last 3 months, average position on page 2.", "clicks": [null, null, null, null, null, null, null, null, null, 29, 86, 85, 39], "impr": [null, null, null, null, null, null, null, null, null, 3577, 10867, 18461, 10077], "pos": [null, null, null, null, null, null, null, null, null, 29.0, 20.0, 15.4, 14.2], "indexed": 556, "notIndexed": 467}]};
+const MONTHS=DATA.months, LAB=MONTHS.map(m=>{const[y,mm]=m.split('-');return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+mm-1]+(mm==='01'||m===MONTHS[0]?" '"+y.slice(2):'')});
+const HALF=i=>i===0||i===MONTHS.length-1;
+const ST={grow:['grow','▲','Growing'],low:['low','!','Seen, not clicked'],flat:['flat','–','Flat'],drop:['drop','▼','Dropping'],new:['new','·','New']};
+const fmt=n=>n==null?'–':n>=10000?(n/1000).toFixed(1).replace('.0','')+'K':n.toLocaleString();
+const sum=(a,i,j)=>a.slice(i,j).reduce((s,x)=>s+(x||0),0);
+const tip=document.getElementById('tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.display='block';const x=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-8);tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px'}
+function hideTip(){tip.style.display='none'}
+const S=DATA.sites;
+// tiles
+(()=>{const tc=S.reduce((s,x)=>s+sum(x.clicks,0,13),0),ti=S.reduce((s,x)=>s+sum(x.impr,0,13),0);const c=k=>S.filter(s=>s.status===k).length;
+const T=[['Visits from Google',fmt(tc),'all 17 sites, last 12 months'],['Times shown in Google',fmt(ti),'all 17 sites, last 12 months'],['Growing',c('grow')+' sites','visits and visibility up'],['Dropping',c('drop')+' sites','big fall since July']];
+document.getElementById('tiles').innerHTML=T.map(t=>`<div class="tile"><div class="lab">${t[0]}</div><div class="val">${t[1]}</div><div class="hint">${t[2]}</div></div>`).join('')})();
+// bar chart
+function bars(el,vals,{h=180,w=null,unit='',color='var(--bar)'}={}){
+ const W=w||Math.max(300,el.clientWidth||360),H=h,ml=38,mr=6,mt=10,mb=26,iw=W-ml-mr,ih=H-mt-mb;
+ const max=Math.max(1,...vals.map(v=>v||0));const step=nice(max);const top=Math.ceil(max/step)*step;
+ const bw=iw/vals.length,gap=Math.max(2,bw*0.28);let s=`<svg width="${W}" height="${H}" role="img">`;
+ for(let v=0;v<=top;v+=step){const y=mt+ih-ih*v/top;s+=`<line x1="${ml}" x2="${W-mr}" y1="${y}" y2="${y}" stroke="var(--grid)"/><text x="${ml-6}" y="${y+4}" text-anchor="end">${fmt(v)}</text>`}
+ vals.forEach((v,i)=>{const x=ml+i*bw+gap/2,bh=ih*(v||0)/top,y=mt+ih-bh;const r=Math.min(4,bh/2,(bw-gap)/2);
+  if(v)s+=`<path d="M${x},${mt+ih}V${y+r}Q${x},${y} ${x+r},${y}H${x+bw-gap-r}Q${x+bw-gap},${y} ${x+bw-gap},${y+r}V${mt+ih}Z" fill="${color}" opacity="${HALF(i)?0.45:1}"/>`;
+  s+=`<rect x="${ml+i*bw}" y="${mt}" width="${bw}" height="${ih}" fill="transparent" data-i="${i}"/>`;
+  if(i%2===0||vals.length<8)s+=`<text x="${ml+i*bw+bw/2}" y="${H-8}" text-anchor="middle">${LAB[i]}</text>`});
+ s+=`<line x1="${ml}" x2="${W-mr}" y1="${mt+ih}" y2="${mt+ih}" stroke="var(--border)"/></svg>`;el.innerHTML=s;
+ el.querySelectorAll('rect[data-i]').forEach(r=>{const i=+r.dataset.i;r.onmousemove=e=>showTip(e,`<b>${LAB[i].replace(/ '.*/,'')} ${MONTHS[i].slice(0,4)}</b>${HALF(i)?' (half month)':''}<br>${vals[i]==null?'no data':fmt(vals[i])+' '+unit}`);r.onmouseleave=hideTip})}
+function nice(m){const p=Math.pow(10,Math.floor(Math.log10(m)));for(const k of[1,2,2.5,5,10])if(m/(k*p)<=5)return k*p;return 10*p}
+function line(el,vals,{h=180}={}){
+ const W=Math.max(300,el.clientWidth||360),H=h,ml=38,mr=10,mt=10,mb=26,iw=W-ml-mr,ih=H-mt-mb;
+ const pv=vals.filter(x=>x!=null);const max=Math.max(20,Math.ceil(Math.max(...pv,1)/20)*20);
+ const X=i=>ml+iw*(i+0.5)/vals.length,Y=v=>mt+ih*(v-1)/(max-1);let s=`<svg width="${W}" height="${H}" role="img">`;
+ s+=`<rect x="${ml}" y="${Y(1)}" width="${iw}" height="${Y(10)-Y(1)}" fill="var(--grid)" opacity=".7"/><text x="${W-mr-4}" y="${Y(1)+12}" text-anchor="end">page 1</text>`;
+ for(const v of [1,...Array.from({length:max/20},(_,k)=>(k+1)*20)]){const y=Y(v);s+=`<line x1="${ml}" x2="${W-mr}" y1="${y}" y2="${y}" stroke="var(--grid)"/><text x="${ml-6}" y="${y+4}" text-anchor="end">${v}</text>`}
+ let d='';vals.forEach((v,i)=>{if(v==null)return;d+=(d&&vals[i-1]!=null?'L':'M')+X(i)+','+Y(v)});
+ s+=`<path d="${d}" fill="none" stroke="var(--line)" stroke-width="2" stroke-linejoin="round"/>`;
+ vals.forEach((v,i)=>{if(v!=null)s+=`<circle cx="${X(i)}" cy="${Y(v)}" r="4" fill="var(--line)" stroke="var(--surface-1)" stroke-width="2" opacity="${HALF(i)?0.5:1}"/>`;if(i%2===0)s+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle">${LAB[i]}</text>`;
+  s+=`<rect x="${X(i)-iw/vals.length/2}" y="${mt}" width="${iw/vals.length}" height="${ih}" fill="transparent" data-i="${i}"/>`});
+ s+=`<line class="xh" x1="0" x2="0" y1="${mt}" y2="${mt+ih}" stroke="var(--text-muted)" stroke-dasharray="3 3" opacity="0"/></svg>`;el.innerHTML=s;const xh=el.querySelector('.xh');
+ el.querySelectorAll('rect[data-i]').forEach(r=>{const i=+r.dataset.i;r.onmousemove=e=>{xh.setAttribute('x1',X(i));xh.setAttribute('x2',X(i));xh.setAttribute('opacity',.6);showTip(e,`<b>${LAB[i].replace(/ '.*/,'')} ${MONTHS[i].slice(0,4)}</b><br>${vals[i]==null?'no data':'Position '+vals[i]+' (page '+Math.ceil(vals[i]/10)+')'}`)};r.onmouseleave=()=>{xh.setAttribute('opacity',0);hideTip()}})}
+function spark(vals){const W=150,H=30,max=Math.max(1,...vals.map(v=>v||0)),bw=W/vals.length;let s=`<svg width="${W}" height="${H}" aria-hidden="true">`;vals.forEach((v,i)=>{const bh=Math.max(v?1.5:0,(H-2)*(v||0)/max);s+=`<rect x="${i*bw+1}" y="${H-bh}" width="${bw-2}" height="${bh}" rx="1.5" fill="var(--bar)" opacity="${HALF(i)?0.45:1}"/>`});return s+'</svg>'}
+// total chart
+const total=MONTHS.map((_,i)=>S.reduce((s,x)=>s+(x.clicks[i]||0),0));
+const drawTotal=()=>bars(document.getElementById('totalChart'),total,{h:200,unit:'visits'});
+// table
+let filt='all';const order={grow:0,low:1,flat:2,drop:3,new:4};
+function stHTML(k){const[c,ic,l]=ST[k];return `<span class="st ${c}"><i>${ic}</i>${l}</span>`}
+document.getElementById('legend').innerHTML=Object.keys(ST).map(stHTML).join('');
+document.getElementById('filters').innerHTML=[['all','All sites'],...['Early learning','Float therapy','Infrared light therapy','Ayurvedic health','Informpros','City Oasis'].map(f=>[f,f])].map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${k===filt}">${l}</button>`).join('');
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{filt=b.dataset.f;document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));drawTable()});
+let cur='float-therapy.com';
+function drawTable(){const rows=S.filter(s=>filt==='all'||s.family===filt).sort((a,b)=>order[a.status]-order[b.status]||sum(b.impr,0,13)-sum(a.impr,0,13));
+ document.querySelector('#tbl tbody').innerHTML=rows.map(s=>{const a=sum(s.clicks,6,9),b=sum(s.clicks,9,12);const ix=s.indexed,tot=(s.indexed||0)+(s.notIndexed||0);const pc=tot?Math.round(ix/tot*100):null;const p=s.pos[11];
+ return `<tr class="row ${s.site===cur?'sel':''}" data-s="${s.site}"><td><div class="site">${s.site}</div><div class="fam">${s.family}</div></td><td>${stHTML(s.status)}</td><td class="num">${a} → <b>${b}</b></td><td>${spark(s.impr)}<div class="delta">${fmt(sum(s.impr,0,13))} in 12 months</div></td><td class="num">${p==null?'–':'Page '+Math.ceil(p/10)}</td><td>${pc==null?'<span class="muted">no data yet</span>':`<span class="ixbar"><span style="width:${pc}%"></span></span>${pc}% <span class="muted">(${ix} of ${tot})</span>`}</td></tr>`}).join('');
+ document.querySelectorAll('tr.row').forEach(r=>r.onclick=()=>{cur=r.dataset.s;sel.value=cur;drawTable();drawDetail();document.getElementById('detail').scrollIntoView({behavior:'smooth'})})}
+const sel=document.getElementById('sel');sel.innerHTML=S.slice().sort((a,b)=>a.site.localeCompare(b.site)).map(s=>`<option>${s.site}</option>`).join('');sel.value=cur;sel.onchange=()=>{cur=sel.value;drawTable();drawDetail()};
+function drawDetail(){const s=S.find(x=>x.site===cur);document.getElementById('dTitle').innerHTML=s.site+' &nbsp;'+stHTML(s.status);document.getElementById('dNote').textContent=s.note;
+ bars(document.getElementById('cClicks'),s.clicks,{unit:'visits'});bars(document.getElementById('cImpr'),s.impr,{unit:'times shown'});line(document.getElementById('cPos'),s.pos)}
+function all(){drawTotal();drawTable();drawDetail()}all();let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(all,150)});
+</script></body></html>
